@@ -7,10 +7,17 @@
 <!-- Pratice using the layout HTML -->
 
 {% block body %}
+
     <form method="POST">
         {% csrf_token %}
-        <p>Are you sure you want to delete the task?</p>
-        <input type="submit">
+        <div class="col justify-content-center">
+            <h3>Are you sure you want to delete the task?</h3>
+        </div>
+        <!-- <input type="submit"> -->
+        <div class="col justify-content-center">
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </div>
+
     </form>
 
 {% endblock %}
