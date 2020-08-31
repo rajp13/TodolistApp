@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+
+        {% load static %}
+        <link rel="stylesheet" type="text/css" href="{% static 'todoApp/style.css' %}">
+
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+        
+        <title>Tasks to do</title>
+
+    </head>
+    <body>
+
+        <h1>List of task todos</h1>
+        
+        <a href="add/"><button type="button">Add Task</button></a>
+
+        <div class="container">
+            <div class="col-md-12">
+                <table class="table table-bordered">
+                    <thead>
+                        <tr class="text-center">
+                            <th scope="row">Task ID</th>
+                            <th>Name</th>
+                            <th>Story Points</th>
+                            <th>Action</th>
+                            <th>Click if completed</th>
+                        </tr>
+                    </thead>
+
+                    <tbody>
+                        {% for task in tasks %}
+                        <tr class="text-center">
+                            <th scope="row">{{task.id}}</th>
+                            <td>{{task.name}}</td>
+                            <td>{{task.storyPoints}}</td>
+                            <td>{{task.action}}</td>
+                            <td><a href="delete/{{task.id}}"><button type="button" class="btn btn-primary">Done</button></a></td>
+                        </tr>
+                        {% endfor %}
+
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+    </body>
+</html>
+
+
+
+
+
+
+

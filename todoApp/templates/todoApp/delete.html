@@ -1,0 +1,16 @@
+
+
+{% extends "todoApp/layout.html" %}
+
+{% load static %}
+
+<!-- Pratice using the layout HTML -->
+
+{% block body %}
+    <form method="POST">
+        {% csrf_token %}
+        <p>Are you sure you want to delete the task?</p>
+        <input type="submit">
+    </form>
+
+{% endblock %}
