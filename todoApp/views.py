@@ -1,6 +1,10 @@
 from django.shortcuts import render, redirect
 
-from django.http import HttpResponse 
+from django.http import HttpResponse
+
+from django.db import models
+
+from django import forms
 
 from .models import Task
 # Create your views here.
@@ -11,6 +15,7 @@ def index(request):
 
 
 def addForm(request):
+    #submit data to the server
     if request.method == "POST":
         #gets the name of the form on the actual request 
         name = request.POST.get("name")
@@ -32,9 +37,38 @@ def delete(request,id):
         return redirect('/')
     return render(request,'todoApp/delete.html')
     
+class updateTask(forms.Form):
+
+    #display name instead of the self objects
+
+
+    name = models.CharField(max_length=100)
+    storyPoints = models.PositiveIntegerField()
+    action = models.TextField()
 
 
 
+class updateTaskForm(forms.ModelForm):
+	name= forms.CharField(widget= forms.TextInput(attrs={'placeholder':'Add new task...'}))
+
+	class Meta:
+		model = Task
+		fields = '__all__'
+
+
+def edit(request,id):
+    task = Task.objects.get(id=id)
+    form = updateTaskForm(instance=task)
+    
+    if request.method == 'POST':
+        form = updateTaskForm(request.POST,instance=task)
+        if form.is_valid():
+            form.save()
+            return redirect('/')
+
+    context = {'form':form}
+
+    return render(request,'todoApp/edit.html', context)
 
 
 

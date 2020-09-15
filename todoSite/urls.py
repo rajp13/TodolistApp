@@ -21,5 +21,6 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('', views.index, name='index'),
     path('add/',views.addForm,name="addForm"),
-    path('delete/<id>',views.delete,name="delete")
+    path('delete/<id>',views.delete,name="delete"),
+    path('edit/<id>',views.edit,name="edit")
 ]

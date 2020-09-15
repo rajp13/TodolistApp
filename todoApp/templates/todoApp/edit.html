@@ -1,0 +1,48 @@
+
+
+{% extends "todoApp/layout.html" %}
+
+{% load static %}
+
+<!-- Pratice using the layout HTML -->
+
+{% block body %}
+    <h2 class="text-center">Edit Task:</h2>
+    <div class="container">
+        
+            <form class="form-group" method="POST">
+                {% csrf_token %}
+                
+                
+                <div class="form-group">
+                    <p> Task Name:
+                        {{form.name}}
+                    </p>
+                   
+                </div>
+
+                <div class="form-group">
+                    <p>Story Points:
+                    {{form.storyPoints}}
+                    </p>
+                </div>
+                
+                <div class="form-group">
+                    <p>Action: </p>
+                    {{form.action}}
+                   
+                </div>
+
+
+                    
+                <button type="submit" name="Update Task" class="btn btn-outline-primary">Update Task</button>
+                
+                <a href="{% url 'index' %}">
+                    <button type="button" name="Go Back" class="btn btn-outline-primary">Go Back</button>
+                </a>
+
+            </form>
+    </div>
+
+
+{% endblock %}

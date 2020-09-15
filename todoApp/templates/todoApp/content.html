@@ -30,7 +30,7 @@
                             <th>Name</th>
                             <th>Story Points</th>
                             <th>Action</th>
-                            <th>Click if completed</th>
+                            <th>Edit/Delete</th>
                         </tr>
                     </thead>
 
@@ -41,7 +41,8 @@
                             <td>{{task.name}}</td>
                             <td>{{task.storyPoints}}</td>
                             <td>{{task.action}}</td>
-                            <td><a href="delete/{{task.id}}"><button type="button" class="btn btn-primary">Done</button></a></td>
+                            <div class="container">
+                            <td><a href="edit/{{task.id}}"><button type="button" class="btn btn-primary btn-block">Edit</button></a> <a href="delete/{{task.id}}"> <button type="button" class="btn btn-primary btn-block mt-2">Delete</button></a></td></div>
                         </tr>
                         {% endfor %}
 
